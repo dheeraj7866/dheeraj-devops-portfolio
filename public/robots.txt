@@ -1,0 +1,13 @@
+# Robots.txt
+# Tell web robots which pages not to crawl
+
+User-agent: *
+Allow: /
+
+# Disallow admin and private paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://dheerajkumar.dev/sitemap.xml

@@ -1,0 +1,83 @@
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add custom utilities */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-neon-gradient;
+  }
+
+  .text-neon-blue {
+    @apply text-neon-blue;
+  }
+
+  .text-neon-purple {
+    @apply text-neon-purple;
+  }
+
+  .text-neon-green {
+    @apply text-neon-green;
+  }
+
+  .text-neon-yellow {
+    @apply text-neon-yellow;
+  }
+
+  .text-neon-red {
+    @apply text-neon-red;
+  }
+
+  .glass {
+    @apply bg-white/30 border border-white/20 rounded-xl backdrop-blur-xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.3)];
+  }
+
+  .glass-light {
+    @apply bg-white/10 border border-white/5 rounded-xl backdrop-blur-lg shadow-[0_4px_6px_-2px_rgba(0,0,0,0.1)];
+  }
+
+  .glass-dark {
+    @apply bg-black/40 border border-white/10 rounded-xl backdrop-blur-xl;
+  }
+
+  .neon-text {
+    @apply text-nowrap;
+    @apply animate-neon-glow;
+  }
+
+  @layer utilities {
+    /* Animate with framer-motion */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .spin-slow {
+      animation: spin 10s linear infinite;
+    }
+
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-4px) rotate(0.5deg);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+  }
+}
+
+/* Custom dark mode classes */
+html.dark .bg {
+  @apply bg-background dark:bg-background;
+}
+html.dark .text {
+  @apply text-foreground dark:text-foreground;
+}
+html.dark .card {
+  @apply bg-card dark:bg-card;
+}
+html.dark .card-foreground {
+  @apply text-card-foreground dark:text-card-foreground;
+}
