@@ -1,3 +1,5 @@
+'use client';
+
 /* src/components/Terminal.tsx */
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';

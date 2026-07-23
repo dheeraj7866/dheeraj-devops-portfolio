@@ -1,3 +1,5 @@
+'use client';
+
 /* src/components/Dashboard.tsx */
 import { motion } from 'framer-motion';
 import { Metrics } from '@/data/resume';
