@@ -3,7 +3,7 @@
 /* src/components/Dashboard.tsx */
 import { motion } from 'framer-motion';
 import { Metrics } from '@/data/resume';
-import { TrendingUp, Activity, Cloud, Terminal, Monitor, Zapp, Clock, Database } from 'lucide-react';
+import { TrendingUp, Activity, Cloud, Terminal, Monitor, Zap, Clock, Database } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function Dashboard() {
@@ -13,7 +13,7 @@ export default function Dashboard() {
       { label: 'AWS Services', value: '20+', icon: Cloud, color: 'neon-purple' },
       { label: 'Microservices', value: '15+', icon: Database, color: 'neon-green' },
       { label: 'CI/CD Pipelines', value: '10+', icon: Monitor, color: 'neon-cyan' },
-      { label: 'Terraform Modules', value: '11', icon: Zapp, color: 'neon-pink' },
+      { label: 'Terraform Modules', value: '11', icon: Zap, color: 'neon-pink' },
       { label: 'Uptime', value: '99.9', icon: Activity, color: 'neon-yellow' }
     ];
 
