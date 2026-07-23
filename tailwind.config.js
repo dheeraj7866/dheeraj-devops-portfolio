@@ -102,6 +102,14 @@ module.exports = {
           '0%, 100%': { boxShadow: '0 0 20px rgba(0, 240, 255, 0.5)' },
           '50%': { boxShadow: '0 0 40px rgba(0, 240, 255, 0.8), 0 0 60px rgba(0, 240, 255, 0.4)' },
         },
+        'neon-glow': {
+          '0%, 100%': { filter: 'drop-shadow(0 0 6px rgba(0, 240, 255, 0.7)) drop-shadow(0 0 14px rgba(168, 85, 247, 0.5))' },
+          '50%': { filter: 'drop-shadow(0 0 12px rgba(0, 240, 255, 1)) drop-shadow(0 0 24px rgba(168, 85, 247, 0.8))' },
+        },
+        'fade-in': {
+          '0%': { opacity: 0, transform: 'translateY(8px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
       },
       animation: {
         'border-beam': 'border-beam 2s linear infinite',
@@ -109,6 +117,8 @@ module.exports = {
         'float': 'float 3s ease-in-out infinite',
         'spin-slow': 'spin-slow 8s linear infinite',
         'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+        'neon-glow': 'neon-glow 2s ease-in-out infinite',
+        'fade-in': 'fade-in 0.6s ease-out forwards',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
