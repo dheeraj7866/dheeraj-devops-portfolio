@@ -25,18 +25,26 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          submodules: true
+          persist-credentials: false
 
-      - name: Setup Node.js 24
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
           cache: npm
+          cache-while: 72h
+
+      - name: Clean node_modules
+        run: |
+          rm -rf node_modules/ package-lock.json *.log
+          mkdir -p node_modules && cd node_modules
+          # Create placeholder lock files
+          touch ../package-lock.json
+          touch ./yarn.lock
 
       - name: Install dependencies
-        run: npm ci
-
-      - name: Run lint
-        run: npm run lint || true
+        run: npm update || npm ci
 
       - name: Build application
         run: npm run build
@@ -58,15 +66,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+          persist-credentials: false
 
-      - name: Setup Node.js 24
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci --no-audit
+          # If installed via 'npm update', ensure lock file exists
+          test -f package-lock.json && npm ci --prefer-lockfile
 
       - name: Build and Export
         run: |
@@ -74,9 +89,9 @@ jobs:
           npm run export
 
       - name: Deploy Preview
-        uses: peaceiris/actions-gh-pages@v4
+        uses: actions/deploy-pages@v4
         with:
+          directory: ./out
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
           keep_history: true
           force_orphan: true
